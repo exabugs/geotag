@@ -27,7 +27,7 @@ router.get('/coordinates', function (req, res) {
   var coordinates = [Number(lat), Number(lon)];
   var collection = db.collection(COL);
   var query = {loc: {"$geoIntersects": {"$geometry": {"type": "Point", "coordinates": coordinates}}}};
-  var fields = {"KEN_NAME":1,"GST_NAME":1,"CSS_NAME":1,"MOJI":1, "KEYCODE1":1};
+  var fields = {"KEN_NAME": 1, "GST_NAME": 1, "CSS_NAME": 1, "MOJI": 1, "KEYCODE1": 1};
 
   collection.findOne(query, fields, function (err, result) {
     if (err || !result) {
