@@ -22,9 +22,9 @@ router.get('/', function (req, res) {
 
 // latitude/longitude
 router.get('/coordinates', function (req, res) {
-  var lat = req.query['lat'] || 0;
   var lon = req.query['lon'] || 0;
-  var coordinates = [Number(lat), Number(lon)];
+  var lat = req.query['lat'] || 0;
+  var coordinates = [Number(lon), Number(lat)];
   var collection = db.collection(COL);
 
   var condition = {"$geometry": {"type": "Point", "coordinates": coordinates}};
