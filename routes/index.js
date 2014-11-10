@@ -30,7 +30,11 @@ router.get('/coordinates', function (req, res) {
   var fields = {"KEN_NAME":1,"GST_NAME":1,"CSS_NAME":1,"MOJI":1, "KEYCODE1":1};
 
   collection.findOne(query, fields, function (err, result) {
-    res.send(result);
+    if (err || !result) {
+      res.send(404);
+    } else {
+      res.send(result);
+    }
   });
 });
 
